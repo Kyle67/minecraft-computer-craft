@@ -28,8 +28,10 @@ print("Max storage is " .. maxStorage)
 
 print("Current Storage\n");
 
+-- // TODO: Loop for counters
+
 local steelCounter = bridge.getItem({ name = "minecraft:dirt" })
-print("Steel: " .. steelCounter)
+print(steelCounter.displayName .. ": " .. steelCounter.amount)
 
 local allItems = bridge.listItems()
 print(dump(allItems))
