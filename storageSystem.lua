@@ -2,6 +2,19 @@ local bridge = peripheral.find("rsBridge")
 
 local maxStorage = bridge.getMaxItemDiskStorage()
 
+function dump(o)
+    if type(o) == 'table' then
+        local s = '{ '
+        for k, v in pairs(o) do
+            if type(k) ~= 'number' then k = '"' .. k .. '"' end
+            s = s .. '[' .. k .. '] = ' .. dump(v) .. ','
+        end
+        return s .. '} '
+    else
+        return tostring(o)
+    end
+end
+
 print("\n\n\n\n\n\n")
 term.setTextColor(colors.red)
 print("WIP - Soon to be storage counters & auto top-up")
@@ -15,5 +28,8 @@ print("Max storage is " .. maxStorage)
 
 print("Current Storage\n");
 
-local steelCounter = bridge.getItem("6BE35A36348F0D25D451CAE590934308")
+local steelCounter = bridge.getItem({ name = "minecraft:dirt" })
 print("Steel: " .. steelCounter)
+
+local allItems = bridge.listItems()
+print(dump(allItems))
