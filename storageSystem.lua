@@ -2,18 +2,19 @@ local bridge = peripheral.find("rsBridge")
 
 local maxStorage = bridge.getMaxItemDiskStorage()
 
-function dump(o)
-    if type(o) == 'table' then
-        local s = '{ '
-        for k, v in pairs(o) do
-            if type(k) ~= 'number' then k = '"' .. k .. '"' end
-            s = s .. '[' .. k .. '] = ' .. dump(v) .. ','
-        end
-        return s .. '} '
-    else
-        return tostring(o)
-    end
-end
+-- function dump(o)
+--     if type(o) == 'table' then
+--         local s = '{ '
+--         for k, v in pairs(o) do
+--             if type(k) ~= 'number' then k = '"' .. k .. '"' end
+--             s = s .. '[' .. k .. '] = ' .. dump(v) .. ','
+--             if k == "name"
+--         end
+--         return s .. '} '
+--     else
+--         return tostring(o)
+--     end
+-- end
 
 print("\n\n\n\n\n\n")
 term.setTextColor(colors.red)
@@ -30,8 +31,11 @@ print("Current Storage\n");
 
 -- // TODO: Loop for counters
 
-local steelCounter = bridge.getItem({ name = "minecraft:dirt" })
-print(steelCounter.displayName .. ": " .. steelCounter.amount)
+local list = {
+    { displayName = "Steel Ingot", name = "mekanism:ingot_steel" },
+    { displayName = "Glass",       name = "minecraft:glass" }
+}
 
-local allItems = bridge.listItems()
-print(dump(allItems))
+for i, v in list do
+    print(v.displayName .. ": " .. v.name)
+end
