@@ -37,5 +37,5 @@ local list = {
 }
 
 for _, v in ipairs(list) do
-    print(v.displayName .. ": " .. v.name)
+    print(v.displayName .. ": " .. bridge.getItem(v.name).amount)
 end
