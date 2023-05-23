@@ -36,6 +36,6 @@ local list = {
     { displayName = "Glass",       name = "minecraft:glass" }
 }
 
-for i, v in list do
+for _, v in ipairs(list) do
     print(v.displayName .. ": " .. v.name)
 end
